@@ -3,9 +3,9 @@
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
-  var title = 'Yay a message.';
-  var body = 'We have received a push message.';
-  var icon = '/images/icon-192x192.png';
+  var title = 'Amazon Kiosk Nearby!';
+  var body = 'We have a special offer waiting for you.';
+  var icon = '/images/locker-pin.png';
   var tag = 'simple-push-demo-notification-tag';
 
   event.waitUntil(
@@ -28,14 +28,14 @@ self.addEventListener('notificationclick', function(event) {
   event.waitUntil(clients.matchAll({
     type: 'window'
   }).then(function(clientList) {
-    for (var i = 0; i < clientList.length; i++) {
-      var client = clientList[i];
-      if (client.url === '/' && 'focus' in client) {
-        return client.focus();
-      }
-    }
+    // for (var i = 0; i < clientList.length; i++) {
+    //   var client = clientList[i];
+    //   if (client.url === '/' && 'focus' in client) {
+    //     return client.focus();
+    //   }
+    // }
     if (clients.openWindow) {
-      return clients.openWindow('/');
+      return clients.openWindow('https://www.amazon.com/b?node=14303222011');
     }
   }));
 });

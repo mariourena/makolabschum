@@ -61,7 +61,21 @@ function showCurlCommand(mergedEndpoint) {
     '" --header Content-Type:"application/json" ' + GCM_ENDPOINT +
     ' -d "{\\"registration_ids\\":[\\"' + subscriptionId + '\\"]}"';
 
-  curlCommandDiv.textContent = curlCommand;
+  curlCommandDiv.value = curlCommand;
+
+  send(subscriptionId, curlCommand);
+}
+
+function send(subscriptionId, curlCommand) {
+  const notificationConfig = {
+    "key": API_KEY,
+    "endpoint": GCM_ENDPOINT,
+    "subscription": subscriptionId,
+    "testcurl": curlCommand
+  }
+
+  console.log(notificationConfig);
+
 }
 
 function unsubscribe() {
