@@ -1,0 +1,39 @@
+<html>
+<head></head>
+<body>
+
+  <h1>Chum Notifications</h1>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCCyxxGlJixmczFksNeFfGdSQOa0E7ebYw",
+      authDomain: "chum-3a092.firebaseapp.com",
+      databaseURL: "https://chum-3a092.firebaseio.com",
+      storageBucket: "chum-3a092.appspot.com",
+      messagingSenderId: "200231153315"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script>
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+      .then(function() {
+        console.log('Have permission');
+        return messaging.getToken();
+      })
+      .then(function(token) {
+        console.log('token', token);
+      })
+      .catch(function(err){
+        console.log('Error', err);
+      })
+
+
+  </script>
+</body>
+</html>
